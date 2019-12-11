@@ -1,4 +1,4 @@
- @charset "gb2312";
+ @charset "utf-8";
 .infos { width: 100%; background: #FFF; overflow: hidden; margin-top: 20px }
 
 .newsview { padding: 20px }
