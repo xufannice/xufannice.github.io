@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset "gb2312";
 .ab_box{ border-top:#dedede 1px solid; padding:20px 0; overflow:hidden;background:rgba(255,255,255,0.8)}
 .leftbox { width: 70%; float: left; overflow: hidden;  }
 .rightbox { width: 28%; float: right; overflow: hidden; margin-right:20px }
