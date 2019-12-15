@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<script src="https://www.jq22.com/jquery/jquery-3.3.1.js"></script>
+
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<style>
+	.bg{
+		background-color: gray;
+		border-bottom:none;
+		border-top:2px solid red;
+		cursor: pointer;
+		user-select: none;
+	}
+</style>
+</head>
+<body>
+	<div id="box">
+		<no1 :aaa="arr2"></no1>
+
+	</div>
+
+	<template id="no1">
+		<div>
+			<h4 style="float:left;width:130px;height:35px;line-height:35px;text-align: center;border-left:1px solid #ddd;" v-for="(i,index) in json" @mouseover="type=index" :class="type==index?'bg':''">{{i.a}}</h4>
+			<div style="width: 520px;float:left;border:1px solid #ccc;border-top: none;" v-for="(i,index) in json" v-show="type==index">
+				<li v-for="a in i">
+					{{a}}
+				</li>
+				
+			</div>
+				
+		</div>
+	</template>
+</body>
+</html>
+<script src="vue.js"></script>
+<script>
+	Vue.component('no1',{
+		template:'#no1',
+		props:['aaa'],
+		data(){
+			return {
+				type:0,
+				json:this.aaa
+			}
+		},
+	})
+	new Vue({
+		el:'#box',
+		data:{
+			type:0,
+			
+			arr2:[{a:'jquery 特效',b:'jquery表格变色隔行变色鼠标滑过竖直表格内容变色效果',c:'jQuery浮动层点击图标按钮关闭或展开',d:'jquery浮动定位层导航描点上下滚动的浮动导航',e:'jquery 表格插件控制表格表格内容拖动标题固定在顶部',f:'jquery表格可编辑修改表格里面的数值'},{a:'javascript 特效',b:'js图片切换插件带滤镜百叶窗图片js幻灯片切换特效',c:'js图片特效制作js焦点图上下滚动slider切换效果',d:'javascript图片特效 网站banner制作焦点图片切换带按钮和固定图标控制',e:'js文字切换特效制作焦点文字带滤镜切换效果',f:'js文字特效制作js文字闪烁与文字变色效果'},{a:'div+css 教程',b:'div+css制作在IE6 上用absolute模拟fixed IE6浏览器定位层框不闪动',c:'CSS如何定位工程',d:'div+css导航菜单用CSS样式表处理斜角导航条',e:'用div+css3美化制作动画导航特效鼠标滑过动画显示',f:'css3教程应用css3 transform属性 图片旋转与盒投影+鼠标悬停效果'},{a:'HTML5 特效',b:'jquery 图片特效用CSS3和HTML5制作仿动画头条报纸缩小到放大翻转图片展示',c:'jquery 幻灯片切换应用一个HTML5的幻灯片',d:'jquery 图片滚动特效应用旋转幻灯片使用jQuery和CSS3',e:'jquery html5 canvas 图表插件获取表格数据值生成走势图',f:'jquery select框应用jquery ui滑块slider制作日期时间进度条'}]
+		}
+	})
+</script>

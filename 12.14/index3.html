@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			img{
+				width:100%;
+				height: 400px;
+			}
+			#box{
+				margin-left:300px;
+			}
+			.no1 {
+				width: 100%;
+				min-height: 400px;
+				position: relative;
+				overflow: hidden;
+			}
+			.no2 {
+				position: absolute;
+				transition: all 1s;
+				top: 0;
+			}
+			.l,.r {
+				width: 40px;
+				text-align: center;
+				line-height: 80px;
+				background: rgba(255, 0, 0, 0.3);
+				position: absolute;
+				top: 50%;
+				margin-top: -40px;
+				color: #FFFFFF;
+				font-size: 35px;
+			}
+			.l {
+				left: 0;
+				user-select: none;
+			}
+			.r {
+				right: 0;
+				user-select: none;
+			}
+			[v-cloak] {
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box" v-cloak="">
+			<lunbo :imgarr="arr"></lunbo>
+		</div>
+		<template id="box1">
+			<div>
+				<div style="width:700px;">
+					<div class="no1" >
+						<div class="no2" :style="{width: 100*arr.length+'%',left:index*-100+'%'}">
+							<img v-for="i in arr" :src="i" :style="{width: 100/arr.length+'%'}" />
+						</div>
+						<div class="l" @click="pre"> <</div> 
+						<div class="r" @click="next"> > </div>
+					</div>
+				</div>
+			</div>
+		</template>
+	</body>
+	<script src="vue.js"></script>
+	<script>
+		Vue.component('lunbo', {
+				template: '#box1',
+				mounted() {
+					var no2_dom = document.getElementsByClassName('no2')[0].offsetHeight
+					this.no2_dom = no2_dom
+				},
+				methods: {
+					// 右键
+					next() {
+						this.index++
+						if (this.index >= this.arr.length) {
+							this.index = 0
+						}
+					},
+					// 左键
+					pre() {
+						this.index--
+						if (this.index <= -1) {
+							this.index = this.arr.length - 1
+						}
+					}
+				},
+				props: ['imgarr'],
+				data(){
+					return {
+						no2_dom: 0,
+						index: 0,
+						arr: this.imgarr
+					}
+				}
+			}),
+
+			new Vue({
+				el: '#box',
+				data: {
+					arr: [
+						'http://e.hiphotos.baidu.com/image/h%3D300/sign=a9e671b9a551f3dedcb2bf64a4eff0ec/4610b912c8fcc3cef70d70409845d688d53f20f7.jpg',
+						'http://e.hiphotos.baidu.com/image/h%3D300/sign=907f6e689ddda144c5096ab282b6d009/dc54564e9258d1092f7663c9db58ccbf6c814d30.jpg',
+						'http://g.hiphotos.baidu.com/image/h%3D300/sign=b5e4c905865494ee982209191df4e0e1/c2cec3fdfc03924590b2a9b58d94a4c27d1e2500.jpg',
+						'http://h.hiphotos.baidu.com/image/h%3D300/sign=0d33eab267224f4a4899751339f69044/b3b7d0a20cf431ad7427dfad4136acaf2fdd98a9.jpg',
+						'http://b.hiphotos.baidu.com/image/h%3D300/sign=05b297ad39fa828bce239be3cd1e41cd/0eb30f2442a7d9337119f7dba74bd11372f001e0.jpg'
+					]
+				}
+			})
+	</script>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+			list-style: none;
+			text-decoration-style: none;
+		}
+		#box{
+			padding:0 10px;
+		}
+		.header{
+			height:70px;
+			margin-bottom:50px;
+			z-index: 999;
+		}
+		.header img{
+			width:42px;
+			height:50px;
+			/*margin-left:30px;*/
+			position: fixed;
+			top:20px;
+			left:35px;
+		}
+		.h4{
+			margin-left:35px;
+			font-size:24px;
+			margin-bottom:10px;
+			font-family: f7d54e78f50d8a50a105dd414be6f767f;
+    font-size: 28px;
+    font-weight: normal;
+    font-style: normal;
+    color: #333333;
+    padding: 0 0 3px 0;
+    display: block;
+    padding: 0 0 3px 0;
+    vertical-align: bottom;
+		}
+		.nav{
+			margin-left:35px;
+			overflow: hidden;
+		}
+		.left{
+			width:220px;
+			font-size:15px;
+			float:left;
+			font-family: Raleway;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    color: #999999;
+    display: block;
+    padding: 2px;
+    vertical-align: bottom;
+		}
+		.right{
+			float:left;
+			margin-left:460px;
+		}
+		.right li{
+			width:100px;
+			height:50px;
+			float:left;
+			/*margin-top: 20px;*/
+			text-align:center;
+			line-height: 50px;
+			cursor: pointer;
+		}
+		.right li:hover{
+			border-bottom:2px solid orange;
+			color:orange;
+		}
+		.li{
+			border-bottom:2px solid orange;
+			color:orange;
+		}
+		.content{
+			overflow: hidden;
+			margin-left:35px;
+			margin-top:30px;
+		}
+		.footer{
+			margin-left: 35px;
+			margin-top: 40px;
+			height:120px;
+			background: #ddd;
+padding-top: 30px;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<div class="header">
+			<img src="https://ccdn.goodq.top/caches/85e9413af2fb7f593b2c9e26f027fb64/aHR0cHM6Ly81ZDZjYWM5NThlNzFmLnQ3NC5xaWZlaXllLmNvbS9xZnktY29udGVudC91cGxvYWRzLzIwMTkvMDgvNjY5ZTBhOWMxMjE0ODI4YTcwZWFiOWUyYjM5NTkyMDAucG5n.png" alt="">
+		</div>
+		<p class="h4">作品合集</p>
+		<div class="nav">
+			<div class="left">
+				<p>
+这里展示了此网站所有作品，
+更多信息请点击查看更多按钮。</p>
+			</div>
+			<div class="right">
+				<ul>
+					<li class="li">所有</li>
+					<li>服装</li>
+					<li>家具</li>
+					<li>商标</li>
+					<li>印刷</li>
+				</ul>
+			</div>
+		</div>
+		<div class="content">
+			<no1></no1>
+		</div>
+		<div class="footer">
+			<no2></no2>
+			<!-- <div style="float:left;">
+				<img src="https://ccdn.goodq.top/caches/85e9413af2fb7f593b2c9e26f027fb64/aHR0cHM6Ly81ZDZjYWM5NThlNzFmLnQ3NC5xaWZlaXllLmNvbS9xZnktY29udGVudC91cGxvYWRzLzIwMTkvMDgvNjY5ZTBhOWMxMjE0ODI4YTcwZWFiOWUyYjM5NTkyMDAtMjV4MzAucG5n.png" alt="">
+				<span>地址：苏州市金鸡湖大道00号
+©版权所有2019模板网站 | 沪ICP备0000000000-号</span>
+			</div> -->
+		</div>
+	</div>
+	<template id="no1">
+		<div>
+			<div v-for="i in arr" style="width:370px;height:400px;float:left;margin-right:20px;">
+				<img @mouseover="btn" :src="i.a" alt=""style="width:361pz;height:300px;cursor: pointer;">
+				<p style="color: #333333;
+    font-size: 22px;
+    font-family: 微軟正黑體;
+    font-weight: normal;
+    padding-top: 10px;
+    padding-bottom: 8px;">{{i.b}}</p>
+				<span style="color: #999999;
+    font-size: 14px;
+    font-family: 微軟正黑體;">{{i.c}}</span>
+			</div>
+		</div>
+	</template>
+	<template id="no2">
+		<div >
+			<div v-for="i in arr" style="float:left;width:260px;margin-right: 30px;">
+				<p style="font-family: f0e76dfc542b4bdd50bfe3d2e088cb63f;
+    font-size: 16px;
+    font-weight: bold;
+    font-style: normal;
+    color: #666666;
+    vertical-align: bottom;
+    margin-bottom:15px;
+}
+
+">{{i.a}}</p>
+				<span style="color: rgb(186, 186, 186);
+    font-size: 14px;
+    background-color: initial;
+    word-spacing: normal;">{{i.b}}</span>
+			</div>
+		</div>
+	</template>
+</body>
+</html>
+<script src="vue.js"></script>
+<script>
+	Vue.component('no2',{
+		template:'#no2',
+		data(){
+			return {
+				arr:[{a:'|业务介绍',b:'服装 / 家居 / 商标 / 印刷'},{a:'|关于我们',b:'我们倾力打造的一个从网站建设，网站运营管理到网站推广的自动化免费建站平台'},{a:'|相关问题',b:'我们倾力打造的一个从网站建设，网站运营管理到网站推广的自动化免费建站平台。'},{
+					a:'|联系我们',b:'地址：苏州市金鸡湖大道00号©版权所有2019模板网站 | 沪ICP备0000000000-号'
+				}]
+			}
+		}
+	})
+	Vue.component('no1',{
+		template:'#no1',
+		data(){
+			return {
+				arr:[{a:'https://ccdn.goodq.top/caches/85e9413af2fb7f593b2c9e26f027fb64/aHR0cHM6Ly81ZDZjYWM5NThlNzFmLnQ3NC5xaWZlaXllLmNvbS9xZnktY29udGVudC91cGxvYWRzLzIwMTkvMDgvODM5ZDgxZmMwMTlmZmMxNWYzNzZkNzZjNmZmZDA1YzQuanBn.jpg',b:'音乐唱片设计',c:'更为直接地呈现当下设计与文化、商业、生活的互动'},{a:'https://ccdn.goodq.top/caches/85e9413af2fb7f593b2c9e26f027fb64/aHR0cHM6Ly81ZDZjYWM5NThlNzFmLnQ3NC5xaWZlaXllLmNvbS9xZnktY29udGVudC91cGxvYWRzLzIwMTkvMDgvNmYwOTU5MGZhMTY5YTNiYzhhZjZjODc2YWIzYTBlMjkuanBn.jpg',b:'音乐唱片设计',c:'更为直接地呈现当下设计与文化、商业、生活的互动'},{a:'https://ccdn.goodq.top/caches/85e9413af2fb7f593b2c9e26f027fb64/aHR0cHM6Ly81ZDZjYWM5NThlNzFmLnQ3NC5xaWZlaXllLmNvbS9xZnktY29udGVudC91cGxvYWRzLzIwMTkvMDgvZmE2YzNlOWU4Zjg4MWU0ZGUzY2Q2NzBmZGJmODBmMDYuanBn.jpg',b:'音乐唱片设计',c:'更为直接地呈现当下设计与文化、商业、生活的互动'},{a:'https://ccdn.goodq.top/caches/85e9413af2fb7f593b2c9e26f027fb64/aHR0cHM6Ly81ZDZjYWM5NThlNzFmLnQ3NC5xaWZlaXllLmNvbS9xZnktY29udGVudC91cGxvYWRzLzIwMTkvMDgvMTE0NWY4YjY1ZmU5YzIwMGRhMDA3OWQ1MjQ1NTU1ZWEuanBn.jpg',b:'音乐唱片设计',c:'更为直接地呈现当下设计与文化、商业、生活的互动'},{a:'https://ccdn.goodq.top/caches/85e9413af2fb7f593b2c9e26f027fb64/aHR0cHM6Ly81ZDZjYWM5NThlNzFmLnQ3NC5xaWZlaXllLmNvbS9xZnktY29udGVudC91cGxvYWRzLzIwMTkvMDgvZTY1ODIyOGM2NmY2NTdhODgyZmMzMjFlNTg2ZjcxN2UuanBn.jpg',b:'音乐唱片设计',c:'更为直接地呈现当下设计与文化、商业、生活的互动'},{a:'https://ccdn.goodq.top/caches/85e9413af2fb7f593b2c9e26f027fb64/aHR0cHM6Ly81ZDZjYWM5NThlNzFmLnQ3NC5xaWZlaXllLmNvbS9xZnktY29udGVudC91cGxvYWRzLzIwMTkvMDgvZWE3M2Q5MjdiNzJjYjlmZDI2ZGNjZDA2ZTQwYTlhYjEuanBn.jpg',b:'音乐唱片设计',c:'更为直接地呈现当下设计与文化、商业、生活的互动'},{a:'https://ccdn.goodq.top/caches/85e9413af2fb7f593b2c9e26f027fb64/aHR0cHM6Ly81ZDZjYWM5NThlNzFmLnQ3NC5xaWZlaXllLmNvbS9xZnktY29udGVudC91cGxvYWRzLzIwMTkvMDgvNzBjOGY5ZjdmNTcwNmY3MDU4ZTM3OWE5ZGU1NGY4MGYuanBn.jpg',b:'音乐唱片设计',c:'更为直接地呈现当下设计与文化、商业、生活的互动'},{a:'https://ccdn.goodq.top/caches/85e9413af2fb7f593b2c9e26f027fb64/aHR0cHM6Ly81ZDZjYWM5NThlNzFmLnQ3NC5xaWZlaXllLmNvbS9xZnktY29udGVudC91cGxvYWRzLzIwMTkvMDgvZWIwNTYxMDdhZTkwYWQ2MmRkNTVkOTMyMWViYmM4OTIuanBn.jpg',b:'音乐唱片设计',c:'更为直接地呈现当下设计与文化、商业、生活的互动'},{a:'https://ccdn.goodq.top/caches/85e9413af2fb7f593b2c9e26f027fb64/aHR0cHM6Ly81ZDZjYWM5NThlNzFmLnQ3NC5xaWZlaXllLmNvbS9xZnktY29udGVudC91cGxvYWRzLzIwMTkvMDgvZjEwOTZlNDkxZjc4NWE2Y2M2ZjA3Y2E1NGY3NGNmOTAuanBn.jpg',b:'音乐唱片设计',c:'更为直接地呈现当下设计与文化、商业、生活的互动'},{a:'https://ccdn.goodq.top/caches/85e9413af2fb7f593b2c9e26f027fb64/aHR0cHM6Ly81ZDZjYWM5NThlNzFmLnQ3NC5xaWZlaXllLmNvbS9xZnktY29udGVudC91cGxvYWRzLzIwMTkvMDgvMGM3NGJiNWQ0NTM0YWFiNjQzY2UxZDJlZjYwNjRhZDYuanBn.jpg',b:'音乐唱片设计',c:'更为直接地呈现当下设计与文化、商业、生活的互动'},{a:'https://ccdn.goodq.top/caches/85e9413af2fb7f593b2c9e26f027fb64/aHR0cHM6Ly81ZDZjYWM5NThlNzFmLnQ3NC5xaWZlaXllLmNvbS9xZnktY29udGVudC91cGxvYWRzLzIwMTkvMDgvYzJhZmE1YWE4NmM1N2Y1YjM2ZGQxOWJhYjczOWU4MWUuanBn.jpg',b:'音乐唱片设计',c:'更为直接地呈现当下设计与文化、商业、生活的互动'},{a:'https://ccdn.goodq.top/caches/85e9413af2fb7f593b2c9e26f027fb64/aHR0cHM6Ly81ZDZjYWM5NThlNzFmLnQ3NC5xaWZlaXllLmNvbS9xZnktY29udGVudC91cGxvYWRzLzIwMTkvMDgvZTVlN2FjNDc1NjY5MTExMDRmNmQxOTg4ZGVhM2EyZjYuanBn.jpg',b:'音乐唱片设计',c:'更为直接地呈现当下设计与文化、商业、生活的互动'},{a:'https://ccdn.goodq.top/caches/85e9413af2fb7f593b2c9e26f027fb64/aHR0cHM6Ly81ZDZjYWM5NThlNzFmLnQ3NC5xaWZlaXllLmNvbS9xZnktY29udGVudC91cGxvYWRzLzIwMTkvMDgvMTE0NWY4YjY1ZmU5YzIwMGRhMDA3OWQ1MjQ1NTU1ZWEuanBn.jpg',b:'音乐唱片设计',c:'更为直接地呈现当下设计与文化、商业、生活的互动'},{a:'https://ccdn.goodq.top/caches/85e9413af2fb7f593b2c9e26f027fb64/aHR0cHM6Ly81ZDZjYWM5NThlNzFmLnQ3NC5xaWZlaXllLmNvbS9xZnktY29udGVudC91cGxvYWRzLzIwMTkvMDgvYzJhZmE1YWE4NmM1N2Y1YjM2ZGQxOWJhYjczOWU4MWUuanBn.jpg',b:'音乐唱片设计',c:'更为直接地呈现当下设计与文化、商业、生活的互动'}]
+			}
+		},
+		methods:{
+			btn(){
+				var img=document.getElementsByClassName('img');
+				// console.log(img)
+				img.onmouseover=function(event){
+					console.log(event)
+				}
+			}
+		}
+	})
+	new Vue({
+		el:'#box',
+
+	})
+	
+</script>
